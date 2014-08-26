@@ -2,14 +2,12 @@
  * Name of Program: TextBuddy
  * This program works with file manipulation
  * User inputs a file name. Program will check if file exists.
- * If file exists, we will not create a new file, but rather simply work on the given file
+ * If file exists, we will not create a new file
  * If file does not exists, we will create the file with the provided name
  * This program allows us to perform add/delete/display/clear functions
  * Internally, all operations are performed on a array list data structure. 
- * Upon user's input of exit, contents of data structure will be written to a temporary file, which will then replace
- * the original file. 
-
-
+ * Upon user's input of exit, contents of data structure will be written to a 
+ * temporary file, which will then replace the original file. 
 
 */
 import java.util.ArrayList;
@@ -40,8 +38,8 @@ public class TextBuddy {
 		sc.close();
 	}
 	
-	//This method accepts the input name for the file, and checks if the file exists. If it does,
-	//we simply work on that file, if it doesn't, we will create this file
+	//This method accepts the input name for the file, and checks if the file exists. 
+	//If it does,we simply work on that file, if it doesn't, we will create this file
 	public static void makeFile(String inputName) throws Exception {
 		newFile = new File(inputName+"txt");
 		if(newFile.exists()){
@@ -55,8 +53,8 @@ public class TextBuddy {
 		printCommand();
 	}
 	
-	//This method is called to load all contents of the file into an array list data structure. This is to 
-	//cater for the case in which file already exists.
+	//This method is called to load all contents of the file into an array list 
+	//data structure. This is to cater for the case in which file already exists.
 	public static void loadToList() throws Exception{
 	
 		Scanner read = new Scanner(newFile);
@@ -70,7 +68,8 @@ public class TextBuddy {
 		read.close();	
 	}
 	
-	//This function is called to accept user's command. Here, we separate the "command" from the details
+	//This function is called to accept user's command. Here, we separate the "command" 
+	//from the details
 	public static String[] readInput(){
 		
 		String line = "";
@@ -88,8 +87,8 @@ public class TextBuddy {
 		return splitter;
 	}
 
-	//This method is provided with user's command, as well as details of the command. It functions as a router,
-	//routing the execution to the correct command method
+	//This method is provided with user's command, as well as details of the command. 
+	//It functions as a router,routing the execution to the correct command method
 	public static void executeChoice(String[] input, String inputName) throws Exception{
 		
 		switch(input[0].toLowerCase()){
@@ -102,7 +101,8 @@ public class TextBuddy {
 	}
 	
 	
-	//This function is called if user's command is to add. It appends user's input to the array list
+	//This function is called if user's command is to add. It appends user's input
+	//to the array list
 	public static void addCall(String input, String inputName){
 		
 		list.add(input);
@@ -111,8 +111,8 @@ public class TextBuddy {
 	}
 	
 	
-	//This function is called if user's command is to delete. It determines the line to be deleted,
-	//and deletes that from the array list
+	//This function is called if user's command is to delete. It determines the line 
+	//to be deleted,and deletes that from the array list
 	public static void deleteCall(String input, String inputName){
 		int serial =0;
 		serial = Integer.valueOf(input.trim());
@@ -120,7 +120,8 @@ public class TextBuddy {
 		System.out.println("deleted from "+inputName+".txt \""+toClear+"\"");
 	}
 	
-	//This function is called if user's command is to display. It displays all contents of the array list
+	//This function is called if user's command is to display. It displays all contents
+	//of the array list
 	public static void displayCall(String inputName){
 		if(list.size()==0){
 			System.out.println(inputName+".txt is empty");
@@ -132,7 +133,8 @@ public class TextBuddy {
 		}
 	}
 	
-	//This function is called if user's command is to clear. It removes all contents from the arraylist 
+	//This function is called if user's command is to clear. It removes all contents 
+	//from the arraylist 
 	public static void clearCall(String inputName) throws Exception{
 		if(list.size()!=0){
 			list.clear();
@@ -143,8 +145,9 @@ public class TextBuddy {
 		System.out.println("all content deleted from "+inputName+".txt");
 	}
 	
-	//This function is called by the delete method. It does 3 mains tasks, it creates a temporary file, copy all of
-	//the array list contents to this temporary file, then replace the temporary file with the original
+	//This function is called by the delete method. It does 3 mains tasks, it creates a
+	//temporary file, copy all of the array list contents to this temporary file, then
+	//replace the temporary file with the original
 	public static void saveToFile() throws Exception{
 		createTempFile();
 		copyToTempFile();
@@ -156,7 +159,7 @@ public class TextBuddy {
 		temp = new File("temp.txt");
 	}
 	
-	//This function is called to copy contents of array list into the tmeporary file
+	//This function is called to copy contents of array list into the temporary file
 	public static void copyToTempFile() throws Exception{
 		Scanner read = new Scanner(newFile);
 		fileW = new FileWriter(temp);
