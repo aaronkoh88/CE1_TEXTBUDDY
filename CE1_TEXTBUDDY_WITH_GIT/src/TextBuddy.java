@@ -120,6 +120,11 @@ public class TextBuddy {
 		replaceFile();
 	}
 	
+	public static void createTempFile(){
+		temp = new File("temp.txt");
+	}
+	
+	
 	
 	
 }
