@@ -68,4 +68,16 @@ public class TextBuddy {
 		return splitter;
 	}
 
+	public static void executeChoice(String[] input, String inputName) throws Exception{
+		
+		switch(input[0].toLowerCase()){
+			case "add": addCall(input[1],inputName); break;
+			case "delete": deleteCall(input[1],inputName); break;
+			case "display": displayCall(inputName); break;
+			case "clear": clearCall(inputName); break;
+			case "exit": saveToFile(); System.exit(0);
+		}
+	}
+	
+	
 }
