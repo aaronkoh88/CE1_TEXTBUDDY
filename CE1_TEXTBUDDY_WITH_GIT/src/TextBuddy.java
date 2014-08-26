@@ -86,6 +86,12 @@ public class TextBuddy {
 	}
 	
 	
+	public static void deleteCall(String input, String inputName){
+		int serial =0;
+		serial = Integer.valueOf(input.trim());
+		String toClear = list.remove(serial-1);
+		System.out.println("deleted from "+inputName+".txt \""+toClear+"\"");
+	}
 	
 	
 }
