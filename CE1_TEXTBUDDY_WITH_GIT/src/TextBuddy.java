@@ -104,6 +104,15 @@ public class TextBuddy {
 		}
 	}
 	
+	public static void clearCall(String inputName) throws Exception{
+		if(list.size()!=0){
+			list.clear();
+		}
+		
+		fileW = new FileWriter(newFile);
+		fileW.close();
+		System.out.println("all content deleted from "+inputName+".txt");
+	}
 	
 	
 	
