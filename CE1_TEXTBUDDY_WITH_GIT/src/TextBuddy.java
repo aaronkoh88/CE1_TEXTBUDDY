@@ -11,5 +11,18 @@ public class TextBuddy {
 	private static BufferedWriter buffW;
 	private static FileWriter fileW;
 	private static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[ ] args){
+	
+		list = new ArrayList<String>();
+		makeFile(args[0]);
+		loadToList();
+		
+		while(sc.hasNext()){
+			String splitter[] = readInput();
+			executeChoice(splitter,args[0]);
+		}
+		sc.close();
+	}
 
 }
