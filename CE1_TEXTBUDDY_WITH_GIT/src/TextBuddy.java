@@ -24,5 +24,18 @@ public class TextBuddy {
 		}
 		sc.close();
 	}
+	
+	public static void makeFile(String inputName) throws Exception {
+		newFile = new File(inputName+"txt");
+		if(newFile.exists()){
+			System.out.println("Welcome to TextBuddy,"+inputName+".txt is ready for use");
+		}
+		else{
+			newFile.createNewFile();
+			System.out.println("Welcome to TextBuddy,"+inputName+".txt is ready for use");
+			
+		}
+		printCommand();
+	}
 
 }
