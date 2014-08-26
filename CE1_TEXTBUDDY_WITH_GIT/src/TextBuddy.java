@@ -48,8 +48,24 @@ public class TextBuddy {
 			list.add(line);
 			
 		}
-		read.close();
+		read.close();	
+	}
+	
+	public static String[] readInput(){
 		
+		String line = "";
+		String input = sc.nextLine();
+		String[] splitter = input.split(" ");
+		splitter[0] = splitter[0].toLowerCase();
+		
+		if(splitter[0].equals("add")|| splitter[0].equals("delete")){
+		
+			for(int i=1; i<splitter.length;i++){
+				line+=splitter[i]+" ";
+			}
+			splitter[1] = line;
+		}
+		return splitter;
 	}
 
 }
