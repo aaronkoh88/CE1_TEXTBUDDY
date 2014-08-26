@@ -124,6 +124,19 @@ public class TextBuddy {
 		temp = new File("temp.txt");
 	}
 	
+	public static void copyToTempFile() throws Exception{
+		Scanner read = new Scanner(newFile);
+		fileW = new FileWriter(temp);
+		buffW = new BufferedWriter(fileW);
+		
+		for(int i=0;i<list.size();i++){
+			buffW.write(list.get(i));
+			buffW.newLine();buffW.flush();
+		}
+		read.close();
+		buffW.close();
+		fileW.close();
+	}
 	
 	
 	
