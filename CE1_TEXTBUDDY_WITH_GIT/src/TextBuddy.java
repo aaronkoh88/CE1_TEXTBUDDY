@@ -145,6 +145,8 @@ public class TextBuddy {
 		}
 	}
 	
-	
+	public static void printCommand(){
+		System.out.println("command: ");
+	}
 	
 }
