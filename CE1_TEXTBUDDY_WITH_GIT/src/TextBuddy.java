@@ -114,6 +114,12 @@ public class TextBuddy {
 		System.out.println("all content deleted from "+inputName+".txt");
 	}
 	
+	public static void saveToFile(){
+		createTempFile();
+		copyToTempFile();
+		replaceFile();
+	}
+	
 	
 	
 }
