@@ -37,5 +37,19 @@ public class TextBuddy {
 		}
 		printCommand();
 	}
+	
+	public static void loadToList() throws Exception{
+	
+		Scanner read = new Scanner(newFile);
+		
+		while(read.hasNextLine()){
+		
+			String line = read.nextLine();
+			list.add(line);
+			
+		}
+		read.close();
+		
+	}
 
 }
