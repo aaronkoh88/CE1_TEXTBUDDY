@@ -93,5 +93,18 @@ public class TextBuddy {
 		System.out.println("deleted from "+inputName+".txt \""+toClear+"\"");
 	}
 	
+	public static void displayCall(String inputName){
+		if(list.size()==0){
+			System.out.println(inputName+".txt is empty");
+		}
+		else{
+			for(int i=0;i<list.size();i++){
+				System.out.println((i+1)+". "+list.get(i));
+			}
+		}
+	}
+	
+	
+	
 	
 }
