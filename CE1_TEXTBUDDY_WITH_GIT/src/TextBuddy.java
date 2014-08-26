@@ -79,5 +79,13 @@ public class TextBuddy {
 		}
 	}
 	
+	public static void addCall(String input, String inputName){
+		
+		list.add(input);
+		System.out.println("added to "+inputName+".txt\""+input+"\"");
+	}
+	
+	
+	
 	
 }
