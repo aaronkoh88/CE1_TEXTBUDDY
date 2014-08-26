@@ -136,6 +136,13 @@ public class TextBuddy {
 		read.close();
 		buffW.close();
 		fileW.close();
+		
+	}
+	
+	public static void replaceFile(){
+		if(newFile.delete()){
+			temp.renameTo(newFile);
+		}
 	}
 	
 	
