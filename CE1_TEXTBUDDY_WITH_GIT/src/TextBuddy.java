@@ -12,7 +12,7 @@ public class TextBuddy {
 	private static FileWriter fileW;
 	private static Scanner sc = new Scanner(System.in);
 	
-	public static void main(String[ ] args){
+	public static void main(String[ ] args) throws Exception{
 	
 		list = new ArrayList<String>();
 		makeFile(args[0]);
@@ -82,7 +82,8 @@ public class TextBuddy {
 	public static void addCall(String input, String inputName){
 		
 		list.add(input);
-		System.out.println("added to "+inputName+".txt\""+input+"\"");
+		System.out.println("added to "+inputName+".txt "
+				+ "\""+input+"\"");
 	}
 	
 	
@@ -114,7 +115,7 @@ public class TextBuddy {
 		System.out.println("all content deleted from "+inputName+".txt");
 	}
 	
-	public static void saveToFile(){
+	public static void saveToFile() throws Exception{
 		createTempFile();
 		copyToTempFile();
 		replaceFile();
