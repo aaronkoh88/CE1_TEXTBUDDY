@@ -41,7 +41,7 @@ public class TextBuddy {
 	//This method accepts the input name for the file, and checks if the file exists. 
 	//If it does,we simply work on that file, if it doesn't, we will create this file
 	public static void makeFile(String inputName) throws Exception {
-		newFile = new File(inputName+"txt");
+		newFile = new File(inputName);
 		if(newFile.exists()){
 			System.out.println("Welcome to TextBuddy,"+inputName+".txt is ready for use");
 		}
@@ -134,7 +134,7 @@ public class TextBuddy {
 	}
 	
 	//This function is called if user's command is to clear. It removes all contents 
-	//from the arraylist 
+	//from the array list 
 	public static void clearCall(String inputName) throws Exception{
 		if(list.size()!=0){
 			list.clear();
