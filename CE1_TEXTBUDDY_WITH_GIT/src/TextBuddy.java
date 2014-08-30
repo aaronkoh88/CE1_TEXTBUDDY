@@ -25,10 +25,9 @@ public class TextBuddy {
 	private static Scanner sc = new Scanner(System.in);
 	
 	private static final int INDEX_ZERO = 0;
+	private static final int INPUT_CONTENTS=1;
 	
 	private static final String MESSAGE_WELCOME_GREETING = "Welcome to TextBuddy. %1$s is ready for use";
-	private static final String MESSAGE_PROMPT_FOR_INPUT = "command: ";
-	
 	
 	//Main function direct input reading/ choice execution to respective methods
 	public static void main(String[ ] args) throws Exception{
@@ -52,15 +51,14 @@ public class TextBuddy {
 		newFile = new File(inputName);
 		if(newFile.exists()){
 		return String.format(MESSAGE_WELCOME_GREETING, inputName);
-			//System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 		}
+		
 		else{
 			newFile.createNewFile();
 			return String.format(MESSAGE_WELCOME_GREETING, inputName);
-			//System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 			
 		}
-		//printCommand();
+	
 	}
 	
 	//This method is called to load all contents of the file into an array list 
@@ -92,7 +90,7 @@ public class TextBuddy {
 			for(int i=1; i<splitter.length;i++){
 				line+=splitter[i]+" ";
 			}
-			splitter[1] = line;
+			splitter[INPUT_CONTENTS] = line;
 		}
 		return splitter;
 	}
@@ -103,12 +101,12 @@ public class TextBuddy {
 		
 		switch(input[INDEX_ZERO].toLowerCase()){
 			case "add": 
-				addCall(input[1].trim(),inputName);
+				addCall(input[INPUT_CONTENTS].trim(),inputName);
 				printCommand();
 				break;
 				
 			case "delete":
-				deleteCall(input[1],inputName);
+				deleteCall(input[INPUT_CONTENTS],inputName);
 				printCommand();
 				break;
 				
