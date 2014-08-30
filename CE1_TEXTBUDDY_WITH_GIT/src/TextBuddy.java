@@ -43,11 +43,11 @@ public class TextBuddy {
 	public static void makeFile(String inputName) throws Exception {
 		newFile = new File(inputName);
 		if(newFile.exists()){
-			System.out.println("Welcome to TextBuddy,"+inputName+".txt is ready for use");
+			System.out.println("Welcome to TextBuddy,"+inputName+" is ready for use");
 		}
 		else{
 			newFile.createNewFile();
-			System.out.println("Welcome to TextBuddy,"+inputName+".txt is ready for use");
+			System.out.println("Welcome to TextBuddy,"+inputName+" is ready for use");
 			
 		}
 		printCommand();
@@ -92,7 +92,7 @@ public class TextBuddy {
 	public static void executeChoice(String[] input, String inputName) throws Exception{
 		
 		switch(input[0].toLowerCase()){
-			case "add": addCall(input[1],inputName); break;
+			case "add": addCall(input[1].trim(),inputName); break;
 			case "delete": deleteCall(input[1],inputName); break;
 			case "display": displayCall(inputName); break;
 			case "clear": clearCall(inputName); break;
@@ -106,8 +106,7 @@ public class TextBuddy {
 	public static void addCall(String input, String inputName){
 		
 		list.add(input);
-		System.out.println("added to "+inputName+".txt "
-				+ "\""+input+"\"");
+		System.out.println("added to "+inputName+ " \""+input+"\"");
 	}
 	
 	
@@ -116,15 +115,15 @@ public class TextBuddy {
 	public static void deleteCall(String input, String inputName){
 		int serial =0;
 		serial = Integer.valueOf(input.trim());
-		String toClear = list.remove(serial-1);
-		System.out.println("deleted from "+inputName+".txt \""+toClear+"\"");
+		String toClear = list.remove(serial-1).trim();
+		System.out.println("deleted from "+inputName+" \""+toClear+"\"");
 	}
 	
 	//This function is called if user's command is to display. It displays all contents
 	//of the array list
 	public static void displayCall(String inputName){
 		if(list.size()==0){
-			System.out.println(inputName+".txt is empty");
+			System.out.println(inputName+" is empty");
 		}
 		else{
 			for(int i=0;i<list.size();i++){
@@ -142,7 +141,7 @@ public class TextBuddy {
 		
 		fileW = new FileWriter(newFile);
 		fileW.close();
-		System.out.println("all content deleted from "+inputName+".txt");
+		System.out.println("all content deleted from "+inputName);
 	}
 	
 	//This function is called by the delete method. It does 3 mains tasks, it creates a
@@ -184,7 +183,7 @@ public class TextBuddy {
 	
 	//This function prints the word "command: "
 	public static void printCommand(){
-		System.out.println("command: ");
+		System.out.print("command: ");
 	}
 	
 }
