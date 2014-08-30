@@ -26,6 +26,8 @@ public class TextBuddy {
 	
 	private static final int INDEX_ZERO = 0;
 	private static final int INPUT_CONTENTS=1;
+	private static final int LIST_EMPTY =0;
+	private static final int INDEX_OFFSET =1;
 	
 	private static final String MESSAGE_WELCOME_GREETING = "Welcome to TextBuddy. %1$s is ready for use";
 	
@@ -87,8 +89,8 @@ public class TextBuddy {
 		
 		if(splitter[0].equals("add")|| splitter[INDEX_ZERO].equals("delete")){
 		
-			for(int i=1; i<splitter.length;i++){
-				line+=splitter[i]+" ";
+			for(int index=1; index<splitter.length;index++){
+				line+=splitter[index]+" ";
 			}
 			splitter[INPUT_CONTENTS] = line;
 		}
@@ -140,9 +142,8 @@ public class TextBuddy {
 	//This function is called if user's command is to delete. It determines the line 
 	//to be deleted,and deletes that from the array list
 	public static void deleteCall(String input, String inputName) throws Exception{
-		int serial =0;
-		serial = Integer.valueOf(input.trim());
-		String toClear = list.remove(serial-1).trim();
+		int serial = Integer.valueOf(input.trim());
+		String toClear = list.remove(serial-INDEX_OFFSET).trim();
 		saveToFile();
 		System.out.println("deleted from "+inputName+" \""+toClear+"\"");
 	}
@@ -150,12 +151,12 @@ public class TextBuddy {
 	//This function is called if user's command is to display. It displays all contents
 	//of the array list
 	public static void displayCall(String inputName){
-		if(list.size()==0){
+		if(list.size()==LIST_EMPTY){
 			System.out.println(inputName+" is empty");
 		}
 		else{
-			for(int i=0;i<list.size();i++){
-				System.out.println((i+1)+". "+list.get(i));
+			for(int index=0;index<list.size();index++){
+				System.out.println((index+INDEX_OFFSET)+". "+list.get(index));
 			}
 		}
 	}
@@ -193,8 +194,8 @@ public class TextBuddy {
 		fileW = new FileWriter(temp);
 		buffW = new BufferedWriter(fileW);
 		
-		for(int i=0;i<list.size();i++){
-			buffW.write(list.get(i));
+		for(int index=0;index<list.size();index++){
+			buffW.write(list.get(index));
 			buffW.newLine();buffW.flush();
 		}
 		read.close();
@@ -215,6 +216,7 @@ public class TextBuddy {
 		System.out.print("command: ");
 	}
 	
+	//This function accepts a string as input and prints it
 	public static void showToUser(String text){
 		System.out.println(text);
 	}
