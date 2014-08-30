@@ -50,7 +50,7 @@ public class TextBuddy {
 	public static String makeFile(String inputName) throws Exception {
 		newFile = new File(inputName);
 		if(newFile.exists()){
-		return String.format(MESSAGE_WELCOME_GREETING, inputName);
+			return String.format(MESSAGE_WELCOME_GREETING, inputName);
 		}
 		
 		else{
@@ -120,6 +120,9 @@ public class TextBuddy {
 				break;
 				
 			case "exit": saveToFile(); System.exit(0);
+			
+			default: System.out.println("Invalid entry: Please try again");
+				break;
 		}
 	}
 	
