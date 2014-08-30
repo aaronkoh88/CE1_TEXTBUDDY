@@ -43,11 +43,11 @@ public class TextBuddy {
 	public static void makeFile(String inputName) throws Exception {
 		newFile = new File(inputName);
 		if(newFile.exists()){
-			System.out.println("Welcome to TextBuddy,"+inputName+" is ready for use");
+			System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 		}
 		else{
 			newFile.createNewFile();
-			System.out.println("Welcome to TextBuddy,"+inputName+" is ready for use");
+			System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 			
 		}
 		printCommand();
@@ -92,10 +92,24 @@ public class TextBuddy {
 	public static void executeChoice(String[] input, String inputName) throws Exception{
 		
 		switch(input[0].toLowerCase()){
-			case "add": addCall(input[1].trim(),inputName); break;
-			case "delete": deleteCall(input[1],inputName); break;
-			case "display": displayCall(inputName); break;
-			case "clear": clearCall(inputName); break;
+			case "add": 
+				addCall(input[1].trim(),inputName);
+				printCommand();
+				break;
+				
+			case "delete":
+				deleteCall(input[1],inputName);
+				printCommand();
+				break;
+				
+			case "display":
+				displayCall(inputName);
+				printCommand();
+				break;
+			case "clear": 
+				clearCall(inputName);
+				printCommand();
+				break;
 			case "exit": saveToFile(); System.exit(0);
 		}
 	}
@@ -103,19 +117,21 @@ public class TextBuddy {
 	
 	//This function is called if user's command is to add. It appends user's input
 	//to the array list
-	public static void addCall(String input, String inputName){
+	public static void addCall(String input, String inputName) throws Exception{
 		
 		list.add(input);
-		System.out.println("added to "+inputName+ " \""+input+"\"");
+		saveToFile();
+		System.out.println("added to "+inputName+ ": \""+input+"\"");
 	}
 	
 	
 	//This function is called if user's command is to delete. It determines the line 
 	//to be deleted,and deletes that from the array list
-	public static void deleteCall(String input, String inputName){
+	public static void deleteCall(String input, String inputName) throws Exception{
 		int serial =0;
 		serial = Integer.valueOf(input.trim());
 		String toClear = list.remove(serial-1).trim();
+		saveToFile();
 		System.out.println("deleted from "+inputName+" \""+toClear+"\"");
 	}
 	
@@ -137,6 +153,7 @@ public class TextBuddy {
 	public static void clearCall(String inputName) throws Exception{
 		if(list.size()!=0){
 			list.clear();
+			saveToFile();
 		}
 		
 		fileW = new FileWriter(newFile);
