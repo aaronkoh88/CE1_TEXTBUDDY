@@ -24,16 +24,19 @@ public class TextBuddy {
 	private static FileWriter fileW;
 	private static Scanner sc = new Scanner(System.in);
 	
+	private static final int INDEX_ZERO = 0;
+	
+	
 	//Main function direct input reading/ choice execution to respective methods
 	public static void main(String[ ] args) throws Exception{
 	
 		list = new ArrayList<String>();
-		makeFile(args[0]);
+		makeFile(args[INDEX_ZERO]);
 		loadToList();
 		
 		while(sc.hasNext()){
 			String splitter[] = readInput();
-			executeChoice(splitter,args[0]);
+			executeChoice(splitter,args[INDEX_ZERO]);
 		}
 		sc.close();
 	}
@@ -75,9 +78,9 @@ public class TextBuddy {
 		String line = "";
 		String input = sc.nextLine();
 		String[] splitter = input.split(" ");
-		splitter[0] = splitter[0].toLowerCase();
+		splitter[INDEX_ZERO] = splitter[INDEX_ZERO].toLowerCase();
 		
-		if(splitter[0].equals("add")|| splitter[0].equals("delete")){
+		if(splitter[0].equals("add")|| splitter[INDEX_ZERO].equals("delete")){
 		
 			for(int i=1; i<splitter.length;i++){
 				line+=splitter[i]+" ";
@@ -91,7 +94,7 @@ public class TextBuddy {
 	//It functions as a router,routing the execution to the correct command method
 	public static void executeChoice(String[] input, String inputName) throws Exception{
 		
-		switch(input[0].toLowerCase()){
+		switch(input[INDEX_ZERO].toLowerCase()){
 			case "add": 
 				addCall(input[1].trim(),inputName);
 				printCommand();
@@ -110,6 +113,7 @@ public class TextBuddy {
 				clearCall(inputName);
 				printCommand();
 				break;
+				
 			case "exit": saveToFile(); System.exit(0);
 		}
 	}
