@@ -26,12 +26,17 @@ public class TextBuddy {
 	
 	private static final int INDEX_ZERO = 0;
 	
+	private static final String MESSAGE_WELCOME_GREETING = "Welcome to TextBuddy. %1$s is ready for use";
+	private static final String MESSAGE_PROMPT_FOR_INPUT = "command: ";
+	
 	
 	//Main function direct input reading/ choice execution to respective methods
 	public static void main(String[ ] args) throws Exception{
 	
 		list = new ArrayList<String>();
-		makeFile(args[INDEX_ZERO]);
+		String fileReady = makeFile(args[INDEX_ZERO]);
+		showToUser(fileReady);
+		printCommand();
 		loadToList();
 		
 		while(sc.hasNext()){
@@ -43,17 +48,19 @@ public class TextBuddy {
 	
 	//This method accepts the input name for the file, and checks if the file exists. 
 	//If it does,we simply work on that file, if it doesn't, we will create this file
-	public static void makeFile(String inputName) throws Exception {
+	public static String makeFile(String inputName) throws Exception {
 		newFile = new File(inputName);
 		if(newFile.exists()){
-			System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
+		return String.format(MESSAGE_WELCOME_GREETING, inputName);
+			//System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 		}
 		else{
 			newFile.createNewFile();
-			System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
+			return String.format(MESSAGE_WELCOME_GREETING, inputName);
+			//System.out.println("Welcome to TextBuddy." +inputName+" is ready for use");
 			
 		}
-		printCommand();
+		//printCommand();
 	}
 	
 	//This method is called to load all contents of the file into an array list 
@@ -205,6 +212,10 @@ public class TextBuddy {
 	//This function prints the word "command: "
 	public static void printCommand(){
 		System.out.print("command: ");
+	}
+	
+	public static void showToUser(String text){
+		System.out.println(text);
 	}
 	
 }
